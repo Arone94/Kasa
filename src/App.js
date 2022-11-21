@@ -1,24 +1,26 @@
-import {Routes, Route} from "react-router-dom";
-import './style/index.scss';
-import Home from './pages/Home';
-import About from './pages/About';
-import Logements from './pages/Logements';
-import Error from './pages/Error';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages//Home";
+import About from "./pages//About";
+import Header from "./components/Header";
+import FicheLogement from "./pages/FicheLogement";
+import Footer from "./components/Footer";
+import Error from "./pages/Error";
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar/>
-        <Routes>
-          <Route path="/" element={ <Home /> }/>
-          <Route path='/a-propos' element={ <About /> }/>
-          <Route path='/logement/:id' element={ <Logements /> }/>
-          <Route path='*' element={ <Error /> }/>
-        </Routes>
-      <Footer/>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Header />
+			<main>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/logement/:id" element={<FicheLogement />} />
+					<Route path="*" element={<Error />} />
+				</Routes>
+			</main>
+			<Footer />
+		</div>
+	);
 }
+
 export default App;
