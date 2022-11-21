@@ -1,0 +1,47 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    img{
+        cursor: pointer;
+        width: 145px;
+        height: 47px;
+        @include desktop-only{
+            width: auto;
+            height: auto;
+        }
+        @include largeScreen-only{
+            width: auto;
+            height: auto;
+        }
+    }
+    nav{
+        ul{
+            display: flex;
+            padding: 0;
+            li, a{
+                color : $color-1;
+                text-decoration: none;
+                list-style: none;
+                text-transform: uppercase;
+                font-size: $font-size-5;
+                &:last-child{
+                    margin-left: 10px;
+                }
+                @include tablettes-only{
+                    font-size: $font-size-4;
+                    text-transform: capitalize;
+                }
+                @include desktop-only{
+                    font-size: $font-size-3;
+                    text-transform: capitalize;
+                }
+                @include largeScreen-only{
+                    font-size: $font-size-3;
+                    text-transform: capitalize;
+                }
+            }
+            
+        }
+    }
+}
