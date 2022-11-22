@@ -1,5 +1,5 @@
-import AboutBanner from "../components/AboutBanner/AboutBanner";
-import Collapse from "../components/Collapse/Collapse";
+import AboutBanner from "../components/AboutBanner";
+import Collapse from "../components/Collapse";
 import aboutArray from "../datas/aboutArray.json"; // j'ai créé un fichier JSON avec les données des collapses
 
 export default function About() {
