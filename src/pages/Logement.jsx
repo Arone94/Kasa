@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Carrousel from "../components/Carrousel";
 import Collapse from "../components/Collapse";
 import Host from "../components/Host";
+import Rate from "../components/Rate";
 import axios from "axios";
 
 export default function FicheLogement() {
@@ -42,7 +43,20 @@ export default function FicheLogement() {
 							<h1>{pickedAppart.title}</h1>
 							<h3>{pickedAppart.location}</h3>
 						</div>
+						
 					</div>
+					<div className="rate-host-container">
+						<div className="host-container redFont">
+							<Host
+								hostName={pickedAppart.host.name}
+								hostPic={pickedAppart.host.picture}
+							/>
+						</div>
+						<div className="rate-container">
+							<Rate score={pickedAppart.rating} />
+						</div>
+					</div>
+					
 				</section>
 				<div className="collapse-fiche-container">
 					<Collapse
