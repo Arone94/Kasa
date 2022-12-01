@@ -4,6 +4,7 @@ import Carrousel from "../components/Carrousel";
 import Collapse from "../components/Collapse";
 import Host from "../components/Host";
 import Rate from "../components/Rate";
+import Tag from "../components/Tag";
 import axios from "axios";
 
 export default function FicheLogement() {
@@ -43,7 +44,11 @@ export default function FicheLogement() {
 							<h1>{pickedAppart.title}</h1>
 							<h3>{pickedAppart.location}</h3>
 						</div>
-						
+						<div className="tags-container">
+							{tags.map((tag) => (
+								<Tag key={tag} tag={tag} />
+							))}
+						</div>
 					</div>
 					<div className="rate-host-container">
 						<div className="host-container redFont">
