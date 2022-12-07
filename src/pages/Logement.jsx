@@ -14,7 +14,7 @@ export default function FicheLogement() {
 	const [pickedAppart, setPickedAppart] = useState();
 	useEffect(() => {
 		const getData = async () => {
-			const res = await axios.get("/logements.json"); //j'ai préféré utiliser une requète AXIOS pour être prêt à la future mise en place de l'API
+			const res = await axios.get("/logements.json"); //Requète AXIOS pour être prêt à la future mise en place de l'API
 			const picked = res.data.find(({ id }) => id === params.id);
 			res.data.map(() => setPickedAppart(picked));
 			if (picked === undefined) {
@@ -24,7 +24,7 @@ export default function FicheLogement() {
 		getData();
 		// eslint-disable-next-line
 	}, []); // array vide du useEffect pour ne lancer qu'une seule fois
-	const slidePics = pickedAppart && pickedAppart.pictures;
+	const slidePics = pickedAppart && pickedAppart.pictures; //Si pickedAppart n'est pas vide alors on accède au champs pictures
 	const tags = pickedAppart && pickedAppart.tags;
 	const equipments = pickedAppart && pickedAppart.equipments;
 	const equip =
