@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Carrousel from "../components/Carrousel";
 import Collapse from "../components/Collapse";
 import Host from "../components/Host";
@@ -10,11 +10,16 @@ import Logements from "../datas/logements.json";
 export default function FicheLogement() {
 	const params = useParams();
 	const logement = Logements;
+	const navigate = useNavigate();
 	const [pickedAppart, setPickedAppart] = useState();
 
 	useEffect(() => {
 			const picked = logement.find(({ id }) => id === params.id); //si id de l'URL et le id de logement sont identiques
-			logement.map(() => setPickedAppart(picked));// eslint-disable-next-line
+			logement.map(() => setPickedAppart(picked));
+			if (picked === undefined) {
+				navigate("/404", { state: { message: "Can't get data" } }); //renvoi vers la page 404 si l'URL de logement invalide
+			};
+			// eslint-disable-next-line
 		}, []);
 
 	const slidePics = pickedAppart && pickedAppart.pictures; //Si pickedAppart n'est pas vide alors on accède au champs pictures
