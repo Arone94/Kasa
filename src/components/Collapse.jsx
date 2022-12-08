@@ -17,7 +17,8 @@ export default function Collapse(props) {
 	}, []);
 
 	return (
-		// affiche le collapse replié par défaut et l'ouvre au clic puis le referme au clic en faisant disparaitre le texte et le style
+		// affiche le collapse replié par défaut
+		// et l'ouvre au clic puis le referme au clic en faisant disparaitre le texte et le style
 		<div className={`collapse ${props.aboutStyle}`}>
 			<div onClick={toggleState} className="collapse__visible">
 				<h2>{props.aboutTitle}</h2>

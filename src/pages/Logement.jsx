@@ -1,29 +1,22 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Carrousel from "../components/Carrousel";
 import Collapse from "../components/Collapse";
 import Host from "../components/Host";
 import Rate from "../components/Rate";
 import Tag from "../components/Tag";
-import axios from "axios";
+import Logements from "../datas/logements.json";
 
 export default function FicheLogement() {
 	const params = useParams();
-	const navigate = useNavigate();
-
+	const logement = Logements;
 	const [pickedAppart, setPickedAppart] = useState();
+
 	useEffect(() => {
-		const getData = async () => {
-			const res = await axios.get("/logements.json"); //Requète AXIOS pour être prêt à la future mise en place de l'API
-			const picked = res.data.find(({ id }) => id === params.id);
-			res.data.map(() => setPickedAppart(picked));
-			if (picked === undefined) {
-				navigate("/404", { state: { message: "Can't get data" } }); //renvoi vers la page 404 en cas d'URL de logement invalide
-			}
-		};
-		getData();
-		// eslint-disable-next-line
-	}, []); // array vide du useEffect pour ne lancer qu'une seule fois
+			const picked = logement.find(({ id }) => id === params.id); //si id de l'URL et le id de logement sont identiques
+			logement.map(() => setPickedAppart(picked));// eslint-disable-next-line
+		}, []);
+
 	const slidePics = pickedAppart && pickedAppart.pictures; //Si pickedAppart n'est pas vide alors on accède au champs pictures
 	const tags = pickedAppart && pickedAppart.tags;
 	const equipments = pickedAppart && pickedAppart.equipments;
