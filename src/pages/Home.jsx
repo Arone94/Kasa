@@ -1,10 +1,16 @@
+import { useState,useEffect } from "react";
 import Banner from "../components/Banner";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import Logements from "../datas/logements.json";
 
 export default function Home() {
-	const data = Logements;
+
+	const [data, setData] = useState([]);
+
+	useEffect (()=> {
+		setData(Logements)
+	}, []);
 
 	return (
 		<>
